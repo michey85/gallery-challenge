@@ -1,0 +1,60 @@
+{
+  "media": [
+    {
+      "id": 1,
+      "type": "image",
+      "name": "Demo image",
+      "url": "demo.url.com/images/one.jpg",
+      "date": "Fri Apr 19 2019 09:00:56 GMT+0200"
+    },
+    {
+      "id": 2,
+      "type": "video",
+      "name": "Demo video",
+      "url": "demo.url.com/video/one.avi",
+      "date": "Fri Apr 19 2019 09:10:24 GMT+0200"
+    },
+    {
+      "type": "image",
+      "name": "Demo image 2",
+      "url": "demo.url.com/images/two.jpg",
+      "date": "Fri Apr 19 2019 09:00:56 GMT+0200",
+      "id": 3
+    },
+    {
+      "type": "image",
+      "name": "Demo image 3",
+      "url": "demo.url.com/images/two.jpg",
+      "date": "Fri Apr 19 2019 09:00:56 GMT+0200",
+      "id": 4
+    },
+    {
+      "type": "image",
+      "name": "Demo image 4",
+      "url": "demo.url.com/images/four.jpg",
+      "date": "Fri Apr 19 2019 09:00:56 GMT+0200",
+      "id": 5
+    },
+    {
+      "type": "image",
+      "name": "Demo image 5",
+      "url": "demo.url.com/images/four.jpg",
+      "date": "Fri Apr 19 2019 09:00:56 GMT+0200",
+      "id": 6
+    },
+    {
+      "type": "image",
+      "name": "Demo image 6",
+      "url": "demo.url.com/images/four.jpg",
+      "date": "Fri Apr 19 2019 09:00:56 GMT+0200",
+      "id": 7
+    },
+    {
+      "type": "image",
+      "name": "Demo image 7",
+      "url": "demo.url.com/images/four.jpg",
+      "date": "Fri Apr 19 2019 09:00:56 GMT+0200",
+      "id": 8
+    }
+  ]
+}
