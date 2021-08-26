@@ -1,8 +1,8 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import {Source} from 'types';
 
 const API_BASE_URL = 'http://localhost:3001';
 
-type Source = 'image' | 'video' | 'audio';
 
 interface MediaCard {
     id: number;
