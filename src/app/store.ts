@@ -1,12 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { setupListeners } from '@reduxjs/toolkit/query';
 
-import {apiGallery} from 'features/gallery-api';
-import galleryConfigSlice from 'features/gallery-config';
+import {apiGallery} from 'shared/api/gallery';
+import {galleryConfigReducer} from 'features/gallery-mode';
 
 export const store = configureStore({
     reducer: {
-        galleryConfig: galleryConfigSlice,
+        galleryConfig: galleryConfigReducer,
         [apiGallery.reducerPath]: apiGallery.reducer,
     },
     middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(apiGallery.middleware),

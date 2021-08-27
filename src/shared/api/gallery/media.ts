@@ -1,15 +1,12 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import {Source} from 'types';
+import {MediaSource, MediaCard} from 'entities/gallery';
 
-const API_BASE_URL = 'http://localhost:3001';
+import {API_BASE_URL} from 'shared/config';
 
 
-export interface MediaCard {
-    id: number;
-    type: Source;
-    name: string;
-    url: string;
-    date: string;
+interface FetchConfig {
+    search?: string;
+    type?: string;
 }
 
 export const apiGallery = createApi({
@@ -25,9 +22,9 @@ export const apiGallery = createApi({
     }),
     endpoints(builder) {
         return {
-            fetchMedia: builder.query<MediaCard[], void>({
-                query() {
-                    return `media`;
+            fetchMedia: builder.query<MediaCard[], FetchConfig | void>({
+                query({search = '', type = ''} = {}) {
+                    return `media?${type ? `type=${type}&` : ''}${search ? `q=${search}` : ''}`;
                 },
                 providesTags: (result) => result ? [
                     ...result.map(({id}) => ({type: 'Media' as const, id})),
@@ -39,7 +36,7 @@ export const apiGallery = createApi({
                     return `/media?q=${search}`;
                 }
             }),
-            fetchMediaByType: builder.query<MediaCard[], Source>({
+            fetchMediaByType: builder.query<MediaCard[], MediaSource>({
                 query(type = 'video') {
                     return `/media?type=${type}`;
                 }

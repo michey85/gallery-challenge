@@ -1,11 +1,11 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import {Source, ViewTypes} from 'types';
+import {MediaSource, MediaViewType} from 'entities/gallery';
 
 
 interface GalleryConfig {
     search: string;
-    type: '' | Source;
-    view: ViewTypes;
+    type: '' | MediaSource;
+    view: MediaViewType;
     isUploading: boolean;
     modalViewSourceId: number | null;
 }
@@ -25,10 +25,10 @@ const galleryConfigSlice = createSlice({
         setSearch(state, action: PayloadAction<string>) {
             state.search = action.payload;
         },
-        setType(state, action: PayloadAction<Source | ''>) {
+        setType(state, action: PayloadAction<MediaSource | ''>) {
             state.type = action.payload;
         },
-        setView(state, action: PayloadAction<ViewTypes>) {
+        setView(state, action: PayloadAction<MediaViewType>) {
             state.view = action.payload;
         },
         setUploading(state, action: PayloadAction<boolean>) {
@@ -47,4 +47,4 @@ export const {
     setUploading,
     setModalViewSource,
 } = galleryConfigSlice.actions;
-export default galleryConfigSlice.reducer;
+export const galleryConfigReducer = galleryConfigSlice.reducer;

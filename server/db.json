@@ -62,6 +62,13 @@
       "url": "https://images.unsplash.com/photo-1546521343-4eb2c01aa44b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=375&q=80",
       "date": "2021-08-27",
       "id": 9
+    },
+    {
+      "type": "image",
+      "name": "Special Book",
+      "url": "https://images.unsplash.com/photo-1575709527142-a93ed587bb83?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&q=80",
+      "date": "2021-08-26",
+      "id": 10
     }
   ]
 }

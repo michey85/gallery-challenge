@@ -2,19 +2,26 @@ import type {FC} from 'react';
 import { AspectRatio, Box, Image } from "@chakra-ui/react"
 import { MdPlayCircleOutline, MdMusicVideo, MdImage } from "react-icons/md";
 
-import type {MediaCard as MediaCardProps} from '.';
+import type {MediaCard} from '../../model';
 
-const MediaCard: FC<MediaCardProps> = (props) => {
+export interface CardProps extends MediaCard {
+    onClick?: React.MouseEventHandler<HTMLDivElement>;
+}
+
+const Card: FC<CardProps> = (props) => {
     const {
         id,
         date,
         name,
         type,
         url,
+        onClick,
     } = props;
 
     return (
-        <Box>
+        <Box
+            onClick={onClick}
+        >
             <AspectRatio
                 ratio={1}
             >
@@ -36,4 +43,4 @@ const MediaCard: FC<MediaCardProps> = (props) => {
     )
 }
 
-export {MediaCard};
+export {Card};

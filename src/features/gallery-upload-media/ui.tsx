@@ -1,10 +1,11 @@
-import { useAppDispatch, useAppSelector } from "app/hooks"
-import { setUploading } from "features/gallery-config";
 import { useState } from "react";
-import { useAddMediaMutation } from ".";
-
-import {Source} from 'types';
 import { Button, FormControl, FormLabel, Input, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, Select } from "@chakra-ui/react";
+
+import { useAppDispatch, useAppSelector } from "app/hooks"
+import { setUploading } from "features/gallery-mode";
+import { MediaSource } from 'entities/gallery';
+
+import { useAddMediaMutation } from "shared/api/gallery";
 
 const Upload = () => {
     const {isUploading} = useAppSelector(state => state.galleryConfig);
@@ -12,12 +13,10 @@ const Upload = () => {
     const [addMedia] = useAddMediaMutation();
 
     // TODO: refactor to useReducer
-    const [type, setType] = useState<Source>('audio');
+    const [type, setType] = useState<MediaSource>('audio');
     const [name, setName] = useState('');
     const [url, setUrl] = useState('');
     const [date, setDate] = useState('');
-
-    if (!isUploading) return null;
 
     const handleUpload = async () => {
         await addMedia({
@@ -31,6 +30,8 @@ const Upload = () => {
         dispatch(setUploading(false))
     }
 
+    if (!isUploading) return null;
+
     return (
         <Modal isOpen={isUploading} onClose={() => dispatch(setUploading(false))}>
             <ModalOverlay />
@@ -38,7 +39,10 @@ const Upload = () => {
                 <ModalHeader>Upload media</ModalHeader>
                 <ModalCloseButton />
                 <ModalBody>
-                    <Select placeholder="select a type" onChange={(e) => setType(e.target.value as Source)}>
+                    <Select
+                        placeholder="select a type"
+                        onChange={(e) => setType(e.target.value as MediaSource)}
+                    >
                         <option value="audio">audio</option>
                         <option value="image">image</option>
                         <option value="video">video</option>
@@ -46,7 +50,10 @@ const Upload = () => {
                     <FormControl>
                         <FormLabel>Name</FormLabel>
                         <Input
-                            name="name" placeholder="name" value={name} onChange={(e) => setName(e.target.value)}
+                            name="name"
+                            placeholder="name"
+                            value={name}
+                            onChange={(e) => setName(e.target.value)}
                             isRequired
                         />
                     </FormControl>
@@ -62,7 +69,13 @@ const Upload = () => {
                     </FormControl>
                     <FormControl>
                         <FormLabel>Date</FormLabel>
-                        <Input type="date" name="date" value={date} onChange={(e) => setDate(e.target.value)} />
+                        {/* TODO: change with react-datepicker */}
+                        <Input
+                            type="date"
+                            name="date"
+                            value={date}
+                            onChange={(e) => setDate(e.target.value)}
+                        />
                     </FormControl>
                 </ModalBody>
                 <ModalFooter>
