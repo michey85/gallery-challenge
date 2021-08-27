@@ -4,7 +4,7 @@ import {Source} from 'types';
 const API_BASE_URL = 'http://localhost:3001';
 
 
-interface MediaCard {
+export interface MediaCard {
     id: number;
     type: Source;
     name: string;

@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useAddMediaMutation } from ".";
 
 import {Source} from 'types';
+import { Button, FormControl, FormLabel, Input, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, Select } from "@chakra-ui/react";
 
 const Upload = () => {
     const {isUploading} = useAppSelector(state => state.galleryConfig);
@@ -31,24 +32,44 @@ const Upload = () => {
     }
 
     return (
-        <div>
-            <select value={type} onChange={(e) => setType(e.target.value as Source)}>
-                <option value="" disabled>select a type</option>
-                <option value="audio">audio</option>
-                <option value="image">image</option>
-                <option value="video">video</option>
-            </select>
-            <div>
-                <input type="text" placeholder="name" value={name} onChange={(e) => setName(e.target.value)} />
-            </div>
-            <div>
-                <input type="text" placeholder="url" value={url} onChange={(e) => setUrl(e.target.value)} />
-            </div>
-            <div>
-                <input type="datetime" value={date} onChange={(e) => setDate(e.target.value)} />
-            </div>
-            <button onClick={handleUpload}>Upload</button>
-        </div>
+        <Modal isOpen={isUploading} onClose={() => dispatch(setUploading(false))}>
+            <ModalOverlay />
+            <ModalContent>
+                <ModalHeader>Upload media</ModalHeader>
+                <ModalCloseButton />
+                <ModalBody>
+                    <Select placeholder="select a type" onChange={(e) => setType(e.target.value as Source)}>
+                        <option value="audio">audio</option>
+                        <option value="image">image</option>
+                        <option value="video">video</option>
+                    </Select>
+                    <FormControl>
+                        <FormLabel>Name</FormLabel>
+                        <Input
+                            name="name" placeholder="name" value={name} onChange={(e) => setName(e.target.value)}
+                            isRequired
+                        />
+                    </FormControl>
+                    <FormControl>
+                        <FormLabel>Url</FormLabel>
+                        <Input
+                            type="url"
+                            name="url"
+                            placeholder="https://"
+                            value={url} onChange={(e) => setUrl(e.target.value)}
+                            isRequired
+                        />
+                    </FormControl>
+                    <FormControl>
+                        <FormLabel>Date</FormLabel>
+                        <Input type="date" name="date" value={date} onChange={(e) => setDate(e.target.value)} />
+                    </FormControl>
+                </ModalBody>
+                <ModalFooter>
+                    <Button onClick={handleUpload}>Upload</Button>
+                </ModalFooter>
+            </ModalContent>
+        </Modal>
     );
 }
 

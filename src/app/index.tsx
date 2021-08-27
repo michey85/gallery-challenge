@@ -1,17 +1,19 @@
 import './index.scss';
-import { useFetchMediaQuery } from 'features/gallery-api';
 import {View} from 'features/gallery-config';
 import { Upload } from 'features/gallery-api';
+import { MediaList } from 'features/gallery-api/MediaList';
+import { Container, Stack } from '@chakra-ui/react';
 
 function App() {
-  const { data: media = [], isLoading } = useFetchMediaQuery();
-
   return (
-    <div>
-      <View />
+    <Container maxW={'920px'}>
+      <Stack spacing={4}>
+        <View />
+        <MediaList />
+      </Stack>
+
       <Upload />
-      <p>Count of media: {media.length}</p>
-    </div>
+    </Container>
   );
 }
 
