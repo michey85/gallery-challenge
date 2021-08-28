@@ -6,7 +6,6 @@ interface GalleryConfig {
     search: string;
     type: '' | MediaSource;
     view: MediaViewType;
-    isUploading: boolean;
     modalViewSourceId: number | null;
 }
 
@@ -14,7 +13,6 @@ const initialState: GalleryConfig = {
     search: '',
     type: '',
     view: 'table',
-    isUploading: false,
     modalViewSourceId: null,
 }
 
@@ -31,9 +29,6 @@ const galleryConfigSlice = createSlice({
         setView(state, action: PayloadAction<MediaViewType>) {
             state.view = action.payload;
         },
-        setUploading(state, action: PayloadAction<boolean>) {
-            state.isUploading = action.payload;
-        },
         setModalViewSource(state, action: PayloadAction<number | null>) {
             state.modalViewSourceId = action.payload;
         }
@@ -44,7 +39,6 @@ export const {
     setSearch,
     setType,
     setView,
-    setUploading,
     setModalViewSource,
 } = galleryConfigSlice.actions;
 export const galleryConfigReducer = galleryConfigSlice.reducer;

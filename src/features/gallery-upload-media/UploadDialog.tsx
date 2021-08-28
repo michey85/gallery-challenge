@@ -1,15 +1,19 @@
-import { useState } from "react";
+import {createPortal} from 'react-dom';
+import { FC, useState } from "react";
 import { Button, FormControl, FormLabel, Input, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, Select } from "@chakra-ui/react";
 
-import { useAppDispatch, useAppSelector } from "app/hooks"
-import { setUploading } from "features/gallery-mode";
 import { MediaSource } from 'entities/gallery';
 
 import { useAddMediaMutation } from "shared/api/gallery";
 
-const Upload = () => {
-    const {isUploading} = useAppSelector(state => state.galleryConfig);
-    const dispatch = useAppDispatch();
+export interface UploadProps {
+    open: boolean;
+    handleClose: () => void;
+}
+
+const UploadDialog: FC<UploadProps> = (props) => {
+    const {open, handleClose} = props;
+
     const [addMedia] = useAddMediaMutation();
 
     // TODO: refactor to useReducer
@@ -27,13 +31,13 @@ const Upload = () => {
         }).unwrap();
 
         // TODO: сброс значений полей
-        dispatch(setUploading(false))
+        handleClose();
     }
 
-    if (!isUploading) return null;
+    if (!open) return null;
 
-    return (
-        <Modal isOpen={isUploading} onClose={() => dispatch(setUploading(false))}>
+    return createPortal(
+        <Modal isOpen={open} onClose={handleClose}>
             <ModalOverlay />
             <ModalContent>
                 <ModalHeader>Upload media</ModalHeader>
@@ -82,8 +86,9 @@ const Upload = () => {
                     <Button onClick={handleUpload}>Upload</Button>
                 </ModalFooter>
             </ModalContent>
-        </Modal>
+        </Modal>,
+        document.body
     );
 }
 
-export {Upload}
+export {UploadDialog}

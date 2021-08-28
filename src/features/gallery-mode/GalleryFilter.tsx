@@ -1,27 +1,19 @@
 import type {FC} from 'react';
 
-import { Box, Button, Flex, Icon, IconButton, Input, InputGroup, InputLeftElement, InputRightElement, Menu, MenuButton, MenuItemOption, MenuList, MenuOptionGroup } from "@chakra-ui/react";
-import { MdViewList, MdGridOn, MdFileUpload, MdExpandMore, MdSearch } from "react-icons/md";
+import { Box, Flex, IconButton, Input, InputGroup, InputLeftElement, InputRightElement, Menu, MenuButton, MenuItemOption, MenuList, MenuOptionGroup } from "@chakra-ui/react";
+import { MdViewList, MdGridOn, MdExpandMore, MdSearch } from "react-icons/md";
 
 import { useAppDispatch, useAppSelector } from "app/hooks";
 import {MediaSource} from 'entities/gallery';
+import { UploadButton } from 'features/gallery-upload-media';
 
-import { setUploading, setView } from "./slice";
+import {setSearch, setType, setView } from "./slice";
 
-
-export interface GalleryFilterProps {
-    search: string;
-    handleSearch: (search: string) => void;
-    type: "" | MediaSource;
-    handleType: (type: "" | MediaSource) => void;
-}
 
 // Panel for gallery config
-const GalleryFilter:FC<GalleryFilterProps> = (props) => {
-    const {handleSearch, search, type, handleType} = props;
-
+const GalleryFilter:FC = () => {
     const dispatch = useAppDispatch();
-    const {view} = useAppSelector(state => state.galleryConfig);
+    const {view, type, search} = useAppSelector(state => state.galleryConfig);
 
     return (
         <Flex
@@ -50,19 +42,7 @@ const GalleryFilter:FC<GalleryFilterProps> = (props) => {
                     fontSize="2xl"
                     mr={[0, null, 10]}
                 />
-                <Button
-                    leftIcon={<Icon
-                        as={MdFileUpload}
-                        color="red.300"
-                        w={8}
-                        h={8}
-                    />}
-                    color="red.300"
-                    variant="ghost"
-                    onClick={() => dispatch(setUploading(true))}
-                >
-                    Upload image
-                </Button>
+                <UploadButton />
             </Box>
 
             <Box>
@@ -75,7 +55,7 @@ const GalleryFilter:FC<GalleryFilterProps> = (props) => {
                         placeholder="Search"
                         type="search"
                         value={search}
-                        onChange={(e) => handleSearch(e.target.value)}
+                        onChange={(e) => dispatch(setSearch(e.target.value))}
                     />
                     <InputRightElement
                         children={
@@ -90,7 +70,7 @@ const GalleryFilter:FC<GalleryFilterProps> = (props) => {
                                         type="radio"
                                         title="Type"
                                         value={type}
-                                        onChange={(value) => {handleType(value as MediaSource | '')}}
+                                        onChange={(value) => {dispatch(setType(value as MediaSource | ''))}}
                                     >
                                         <MenuItemOption value="">all</MenuItemOption>
                                         <MenuItemOption value="audio">audio</MenuItemOption>
