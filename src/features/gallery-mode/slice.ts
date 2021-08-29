@@ -42,3 +42,4 @@ export const {
     setModalViewSource,
 } = galleryConfigSlice.actions;
 export const galleryConfigReducer = galleryConfigSlice.reducer;
+

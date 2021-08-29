@@ -1,11 +1,23 @@
 import type {FC} from 'react';
-
-import { Box, Flex, IconButton, Input, InputGroup, InputLeftElement, InputRightElement, Menu, MenuButton, MenuItemOption, MenuList, MenuOptionGroup } from "@chakra-ui/react";
+import {
+    Box,
+    Flex,
+    IconButton,
+    Input,
+    InputGroup,
+    InputLeftElement,
+    InputRightElement,
+    Menu,
+    MenuButton,
+    MenuItemOption,
+    MenuList,
+    MenuOptionGroup,
+} from "@chakra-ui/react";
 import { MdViewList, MdGridOn, MdExpandMore, MdSearch } from "react-icons/md";
 
 import { useAppDispatch, useAppSelector } from "app/hooks";
 import {MediaSource} from 'entities/gallery';
-import { UploadButton } from 'features/gallery-upload-media';
+import {UploadButton} from 'features/gallery-upload-media';
 
 import {setSearch, setType, setView } from "./slice";
 

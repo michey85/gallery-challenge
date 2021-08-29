@@ -1,5 +1,5 @@
 import type {FC} from 'react';
-import { UnorderedList, ListItem, SimpleGrid, Container } from "@chakra-ui/react";
+import { UnorderedList, ListItem, SimpleGrid, Container, Heading } from "@chakra-ui/react";
 
 import { Card } from "../card/Card";
 import type {MediaCard, MediaViewType} from '../../model';
@@ -7,14 +7,11 @@ import type {MediaCard, MediaViewType} from '../../model';
 interface MediaListProps {
     data: MediaCard[];
     view?: MediaViewType;
-    handleCardClick?: React.MouseEventHandler<HTMLElement>;
+    handleCardClick?: (id: number | null) => void;
 }
 
 const MediaList: FC<MediaListProps> = (props) => {
     const {data, view = 'table', handleCardClick} = props;
-    
-    // const {view} = useAppSelector(state => state.galleryConfig);
-    // const {data = [], isLoading, isError, error} = useFetchMediaQuery();
 
     return view === 'table' ? (
         <SimpleGrid columns={[2, 4, 8]}>
@@ -24,9 +21,10 @@ const MediaList: FC<MediaListProps> = (props) => {
         </SimpleGrid>
     ) : (
         <Container>
+            <Heading>Well, yeah, it looks ugly. But it works =)</Heading>
             <UnorderedList>
                 {data.map(item => (
-                    <ListItem key={item.id} onClick={handleCardClick}>
+                    <ListItem key={item.id} onClick={handleCardClick && (() => handleCardClick(item.id))}>
                         {item.name}
                     </ListItem>
                 ))}

@@ -11,7 +11,7 @@
       "id": 2,
       "type": "video",
       "name": "Demo video",
-      "url": "https://www.youtube.com/embed/QhBnZ6NPOY0",
+      "url": "https://www.youtube.com/watch?v=QhBnZ6NPOY0",
       "date": "Fri Apr 19 2019 09:10:24 GMT+0200"
     },
     {
@@ -76,6 +76,20 @@
       "url": "https://images.unsplash.com/photo-1517673132405-a56a62b18caf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=756&q=80",
       "date": "2021-08-05",
       "id": 11
+    },
+    {
+      "type": "audio",
+      "name": "Simple piano",
+      "url": "https://cdn.plyr.io/static/demo/Kishi_Bashi_-_It_All_Began_With_a_Burst.mp3",
+      "date": "2021-08-13",
+      "id": 12
+    },
+    {
+      "type": "video",
+      "name": "Spider man?",
+      "url": "https://www.youtube.com/watch?v=wMe9Jl0IXIs",
+      "date": "2021-08-29",
+      "id": 13
     }
   ]
 }

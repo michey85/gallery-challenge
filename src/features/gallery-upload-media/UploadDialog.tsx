@@ -87,7 +87,7 @@ const UploadDialog: FC<UploadProps> = (props) => {
                 </ModalFooter>
             </ModalContent>
         </Modal>,
-        document.body
+        document.body,
     );
 }
 
