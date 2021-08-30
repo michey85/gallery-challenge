@@ -3,7 +3,7 @@ export interface MediaCard {
     type: MediaSource;
     name: string;
     url: string;
-    date: string;
+    date: Date;
 }
 
 export type MediaSource = 'image' | 'video' | 'audio';
