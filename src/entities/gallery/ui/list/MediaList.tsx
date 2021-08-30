@@ -1,7 +1,7 @@
 import type {FC} from 'react';
-import { UnorderedList, ListItem, SimpleGrid, Container, Heading } from "@chakra-ui/react";
+import { Box, UnorderedList, ListItem, SimpleGrid, Container, Heading } from "@chakra-ui/react";
 
-import { Card } from "../card/Card";
+import {Card} from "../card/Card";
 import type {MediaCard, MediaViewType} from '../../model';
 
 interface MediaListProps {
@@ -12,6 +12,10 @@ interface MediaListProps {
 
 const MediaList: FC<MediaListProps> = (props) => {
     const {data, view = 'table', handleCardClick} = props;
+
+    if (!data.length) {
+        return <Box>Media Cards not found.</Box>
+    }
 
     return view === 'table' ? (
         <SimpleGrid columns={[2, 4, 8]}>

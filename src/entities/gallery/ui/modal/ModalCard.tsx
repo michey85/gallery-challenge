@@ -17,7 +17,7 @@ import {
 import { MdChevronLeft, MdChevronRight } from 'react-icons/md';
 
 import { useAppDispatch, useAppSelector } from 'app/hooks';
-import {setModalViewSource} from 'features/gallery-mode/slice';
+import {setModalViewSource} from 'entities/gallery';
 
 import type {MediaCard} from '../../model';
 import {getCurrentCard} from './lib/getCurrentCard';
@@ -30,7 +30,7 @@ export interface ModalCardProps {
 
 const ModalCard: FC<ModalCardProps> = (props) => {
     const dispatch = useAppDispatch();
-    const {modalViewSourceId: activeId} = useAppSelector(state => state.galleryConfig)
+    const {modalViewSourceId: activeId} = useAppSelector(state => state.galleryModal)
     const {list} = props;
 
     if (!activeId) return null;

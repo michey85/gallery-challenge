@@ -2,11 +2,15 @@ import { configureStore } from '@reduxjs/toolkit';
 import { setupListeners } from '@reduxjs/toolkit/query';
 
 import {apiGallery} from 'shared/api/gallery';
-import {galleryConfigReducer} from 'features/gallery-mode';
+import {galleryViewReducer} from 'features/gallery-view-select';
+import {galleryFilterReducer} from 'features/gallery-filter';
+import {galleryModalReducer} from 'entities/gallery/ui';
 
 export const store = configureStore({
     reducer: {
-        galleryConfig: galleryConfigReducer,
+        galleryView: galleryViewReducer,
+        galleryFilter: galleryFilterReducer,
+        galleryModal: galleryModalReducer,
         [apiGallery.reducerPath]: apiGallery.reducer,
     },
     middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(apiGallery.middleware),

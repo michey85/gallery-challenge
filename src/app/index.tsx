@@ -5,13 +5,14 @@ import './index.scss';
 import { useAppSelector, useAppDispatch } from "app/hooks";
 import { useFetchMediaQuery } from "shared/api/gallery";
 
-import {GalleryFilter, setModalViewSource} from 'features/gallery-mode';
-import { MediaList, ModalCard } from 'entities/gallery';
+import {GalleryConfigPanel} from 'widgets/gallery-config-panel'
+import { MediaList, ModalCard, setModalViewSource } from 'entities/gallery';
 
 function App() {
-  const {view, search, type} = useAppSelector(state => state.galleryConfig);
+  const {search, type} = useAppSelector(state => state.galleryFilter);
+  const {view} = useAppSelector(state => state.galleryView);
   const [searchValue] = useDebounce(search, 350);
-  const {data = [], isLoading} = useFetchMediaQuery({search: searchValue, type});
+  const {data = []} = useFetchMediaQuery({search: searchValue, type});
 
   const dispatch = useAppDispatch();
   const handleModalCard = (id: number | null) => {
@@ -22,8 +23,7 @@ function App() {
     <>
       <Container maxW={'1200px'}>
         <Stack spacing={4}> 
-          <GalleryFilter />
-          {isLoading && <h2>Loading...</h2>}
+          <GalleryConfigPanel />
           <MediaList data={data} view={view} handleCardClick={handleModalCard} />
         </Stack>
       </Container>
