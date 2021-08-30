@@ -2,7 +2,7 @@ import type {FC} from 'react';
 import {IconButton} from "@chakra-ui/react";
 import { MdViewList, MdGridOn } from "react-icons/md";
 
-import { useAppDispatch, useAppSelector } from "app/hooks";
+import { useAppDispatch, useAppSelector } from "shared/hooks";
 import {setView } from "./slice";
 
 

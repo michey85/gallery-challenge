@@ -16,7 +16,7 @@ import {
 } from '@chakra-ui/react';
 import { MdChevronLeft, MdChevronRight } from 'react-icons/md';
 
-import { useAppDispatch, useAppSelector } from 'app/hooks';
+import { useAppDispatch, useAppSelector } from 'shared/hooks';
 import {setModalViewSource} from 'entities/gallery';
 
 import type {MediaCard} from '../../model';

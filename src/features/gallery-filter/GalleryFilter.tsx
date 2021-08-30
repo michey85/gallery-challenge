@@ -13,7 +13,7 @@ import {
 } from '@chakra-ui/react';
 import { MdExpandMore, MdSearch } from 'react-icons/md';
 
-import { useAppDispatch, useAppSelector } from "app/hooks";
+import { useAppDispatch, useAppSelector } from "shared/hooks";
 import {MediaSource} from 'entities/gallery';
 
 import {setSearch, setType } from "./slice";

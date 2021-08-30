@@ -1,8 +1,7 @@
 import { Container, Stack } from '@chakra-ui/react';
 import {useDebounce} from 'use-debounce';
-import './index.scss';
 
-import { useAppSelector, useAppDispatch } from "app/hooks";
+import { useAppSelector, useAppDispatch } from "shared/hooks";
 import { useFetchMediaQuery } from "shared/api/gallery";
 
 import {GalleryConfigPanel} from 'widgets/gallery-config-panel'
