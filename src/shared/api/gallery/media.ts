@@ -24,7 +24,7 @@ export const apiGallery = createApi({
         return {
             fetchMedia: builder.query<MediaCard[], FetchConfig | void>({
                 query({search = '', type = ''} = {}) {
-                    return `media?${type ? `type=${type}&` : ''}${search ? `q=${search}` : ''}`;
+                    return `media?_sort=id&_order=desc&${type ? `type=${type}&` : ''}${search ? `q=${search}` : ''}`;
                 },
                 providesTags: (result) => result ? [
                     ...result.map(({id}) => ({type: 'Media' as const, id})),
