@@ -10,15 +10,15 @@ npm run dev
 ## What and why
 
 ### Structure
-For this project I chose [feature-sliced](https://feature-sliced.design/) approach. It's modern, scalable and easy to maintain.
+For this project I chose [feature-sliced](https://feature-sliced.design/en/) approach. It's modern, scalable and easy to maintain methodology for designing frontend projects.
 
 The app contains different levels of logic:
-- shared - store, hooks, api's, config (also could contain UI atomic elements, but I use a library)
-- entities - base UI elements (cards, lists etc.)
+- shared - store, api's, config, hooks (also could contain UI atomic elements, but I use a library)
+- entities - main UI elements (cards, lists etc.), based on shared UI
 - features - UI elements with business logic
 - widgets - composition of UI elements
 
-Feature sliced approach also has a `page` folder, but for our purposes I decided to use just app component, because we don't have pages yet.
+Feature-sliced approach also has a `page` folder, but for our purposes I decided to use just `app` component, because we don't have pages yet.
 
 
 ### UI
@@ -36,7 +36,7 @@ I actually don't have a real server, because I worked on Frontend part. But I us
 
 ## Challenge details (with my comments)
 1. **The gallery will contain different types of files: images, audio and videos.**
-I decided not create Pixel perfect design, because I have just a picture. I had a lot of questions on it, but I focused on functionality.
+I decided not create Pixel perfect design, because I had just a picture. I had a lot of questions on it, but I focused on functionality.
 
 2. **The user should be able to filter the files by name.**
 Done.
@@ -57,4 +57,4 @@ Done.
 Done.
 
 8. **The gallery should upload images or videos through a form and then display them in the gallery.**
-Done. It can upload by http link. Any picture, but for video for now it's just a YouTube links. I think on a real project you already have a UI Video component (with a lot of options it takes a long time to create it), for this one I just use `iframe`. Same story with audio. For now it's just a simple `audio` html5 tag.
+Done. Resources can be uploaded by http link. Any picture, but for video for now it's just a `YouTube` links. I think on a real project you already have a UI Video component (with a lot of options it takes a long time to create it), for this one I just use `iframe`. Same story with audio. For now it's just a simple `audio` html5 tag.

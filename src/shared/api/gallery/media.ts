@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import {MediaSource, MediaCard} from 'entities/gallery';
+import {MediaCard} from 'entities/gallery';
 
 import {API_BASE_URL} from 'shared/config';
 
@@ -31,16 +31,6 @@ export const apiGallery = createApi({
                     {type: 'Media', id: 'LIST'}
                 ] : [{type: 'Media', id: 'LIST'}],
             }),
-            fetchMediaByQuery: builder.query<MediaCard[], string | void>({
-                query(search = '') {
-                    return `/media?q=${search}`;
-                }
-            }),
-            fetchMediaByType: builder.query<MediaCard[], MediaSource>({
-                query(type = 'video') {
-                    return `/media?type=${type}`;
-                }
-            }),
             addMedia: builder.mutation<MediaCard, Partial<MediaCard>>({
                 query(body) {
                     return {
@@ -57,7 +47,5 @@ export const apiGallery = createApi({
 
 export const {
     useFetchMediaQuery,
-    useFetchMediaByQueryQuery,
-    useFetchMediaByTypeQuery,
     useAddMediaMutation,
 } = apiGallery;

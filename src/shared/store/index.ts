@@ -1,5 +1,5 @@
-import { configureStore } from '@reduxjs/toolkit';
-import { setupListeners } from '@reduxjs/toolkit/query';
+import {configureStore} from '@reduxjs/toolkit';
+import {setupListeners} from '@reduxjs/toolkit/query';
 
 import {apiGallery} from 'shared/api/gallery';
 import {galleryViewReducer} from 'features/gallery-view-select';
